@@ -1,0 +1,7 @@
+---
+become: true
+tasks:
+- name Update Fedora packages
+raw: /usr/bin/dnf update -y
+- name Reboot system
+raw: /usr/sbin/reboot
