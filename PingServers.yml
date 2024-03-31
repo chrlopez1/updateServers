@@ -1,0 +1,4 @@
+---
+become: false
+- name: Ping Servers
+  ping: 
