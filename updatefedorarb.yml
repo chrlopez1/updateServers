@@ -1,0 +1,14 @@
+---
+- name: Update Fedora server and reboot if necessary
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update packages on Fedora
+      dnf:
+        name: '*'
+        state: latest
+      register: dnf_output
+
+    - name: Reboot if required
+      ansible.builtin.reboot:
+      when: dnf_output.changed
