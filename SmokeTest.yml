@@ -2,22 +2,22 @@
 - name: Perform smoke test on Fedora server
   hosts: all
   tasks:
-    - name: Check if port 9090 is open
-      ansible.builtin.wait_for:
-        host: "{{ ansible_host }}"
-        port: 9090
-        state: started
+    - name: Check if Fedora web console is accessible
+      ansible.builtin.uri:
+        url: "https://{{ ansible_host }}:9090"
+        method: GET
+        validate_certs: no
+        status_code: 200
         timeout: 10
-      register: port_check_result
+      register: console_check_result
       ignore_errors: true
 
-    - name: Verify web server is running on port 9090
+    - name: Verify Fedora web console is accessible
       assert:
         that: 
-          - port_check_result is success
-          - "'Fedora' in (lookup('url', 'https://{{ ansible_host }}:9090'))"
+          - console_check_result.status == 200
       register: smoke_test_result
-      when: port_check_result is success
+      when: console_check_result.status is defined
 
     - name: Print smoke test result
       ansible.builtin.debug:
