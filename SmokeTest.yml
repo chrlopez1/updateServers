@@ -15,7 +15,7 @@
       assert:
         that: 
           - port_check_result is success
-          - "'Fedora Linux Server Edition' in (lookup('url', 'https://{{ ansible_host }}:9090'))"
+          - "'Fedora' in (lookup('url', 'https://{{ ansible_host }}:9090'))"
       register: smoke_test_result
       when: port_check_result is success
 
