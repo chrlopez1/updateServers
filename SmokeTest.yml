@@ -21,4 +21,4 @@
 
     - name: Print smoke test result
       ansible.builtin.debug:
-        msg: "Smoke test {{ 'passed' if smoke_test_result else 'failed' }}"
+        msg: "Smoke test {{ 'passed' if port_check_result else 'failed' }}"
