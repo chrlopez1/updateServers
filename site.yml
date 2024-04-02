@@ -1,16 +1,16 @@
 ---
 - name: Run PingServers
   tasks:
-    - import_playbook: PingServers.yml
+    - import.playbook: PingServers.yml
 
 - name: Run SmokeTest
   tasks:
-    - import_playbook: SmokeTest.yml
+    - import.playbook: SmokeTest.yml
 
 - name: Run UpdateFedora
   tasks:
-    - import_playbook: UpdateFedora.yml
+    - import.playbook: UpdateFedora.yml
     
 - name: Run SmokeTest after
   tasks:
-    - import_playbook: SmokeTest.yml
+    - import.playbook: SmokeTest.yml
