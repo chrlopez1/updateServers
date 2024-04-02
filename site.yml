@@ -1,16 +1,16 @@
 ---
 - name: Run PingServers
   tasks:
-    - import.playbook: PingServers.yml
+    - ansible.builtin.import_playbook: PingServers.yml
 
 - name: Run SmokeTest
   tasks:
-    - import.playbook: SmokeTest.yml
+    - ansible.builtin.import_playbook: SmokeTest.yml
 
 - name: Run UpdateFedora
   tasks:
-    - import.playbook: UpdateFedora.yml
+    - ansible.builtin.import_playbook: UpdateFedora.yml
     
 - name: Run SmokeTest after
   tasks:
-    - import.playbook: SmokeTest.yml
+    - ansible.builtin.import_playbook: SmokeTest.yml
