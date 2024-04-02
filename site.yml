@@ -1,4 +1,8 @@
 ---
+tasks:
+    - ansible.builtin.debug:
+        msg: play1
+        
 - name: Run PingServers
     - ansible.builtin.import_playbook: PingServers.yml
 
