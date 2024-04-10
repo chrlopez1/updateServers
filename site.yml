@@ -3,18 +3,23 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Import PingServers playbook
-      import_playbook: playbooks/PingServers.yml
+    - name: Wait for 10 seconds
+        pause:
+          seconds: 10
+            msg: "Wait is over"
+            
+    - import_playbook: "playbooks/PingServers.yml"
 
-    - name: Import SmokeTest playbook
-      import_playbook: playbooks/SmokeTest.yml
+    - name: Run Smoketest before patch
+  
+    - import_playbook: "playbooks/SmokeTest.yml"
 
-    - name: Import UpdateFedora playbook
-      import_playbook: playbooks/UpdateFedora.yml
+ #   - name: Import UpdateFedora playbook
+ #     import_playbook: "playbooks/UpdateFedora.yml"
 
-    - name: Wait for 30 seconds
-      pause:
-        seconds: 30
+#    - name: Wait for 30 seconds
+ #     pause:
+  #      seconds: 30
 
-    - name: Import SmokeTest playbook again
-      import_playbook: playbooks/SmokeTest.yml
+   # - name: Import SmokeTest playbook again
+ #     import_playbook: "playbooks/SmokeTest.yml"
