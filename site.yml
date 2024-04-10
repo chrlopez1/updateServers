@@ -17,12 +17,19 @@
   
 - import_playbook: "playbooks/SmokeTest.yml"
 
- #   - name: Import UpdateFedora playbook
- #     import_playbook: "playbooks/UpdateFedora.yml"
+- name: Patching servers
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  
+- import_playbook: "playbooks/UpdateFedora.yml"
 
-#    - name: Wait for 30 seconds
- #     pause:
-  #      seconds: 30
+- name: Run Smoketest after patch
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Wait for 10 seconds
+      pause:
+        seconds: 10
 
-   # - name: Import SmokeTest playbook again
- #     import_playbook: "playbooks/SmokeTest.yml"
+- import_playbook: "playbooks/SmokeTest.yml"
