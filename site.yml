@@ -8,11 +8,11 @@
           seconds: 10
           msg: "Wait is over"
             
-    - import_playbook: "playbooks/PingServers.yml"
+- import_playbook: "playbooks/PingServers.yml"
 
-    - name: Run Smoketest before patch
+- name: Run Smoketest before patch
   
-    - import_playbook: "playbooks/SmokeTest.yml"
+- import_playbook: "playbooks/SmokeTest.yml"
 
  #   - name: Import UpdateFedora playbook
  #     import_playbook: "playbooks/UpdateFedora.yml"
