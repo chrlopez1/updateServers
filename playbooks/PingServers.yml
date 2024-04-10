@@ -1,0 +1,12 @@
+---
+- name: Ping servers using Ansible Semaphore
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Ping all servers
+      ansible.builtin.ping:
+      register: ping_result
+
+    - name: Display ping results
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} is {{ 'reachable' if ping_result.ping else 'unreachable' }}"

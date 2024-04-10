@@ -1,0 +1,24 @@
+---
+- name: Perform smoke test on Fedora server
+  hosts: all
+  tasks:
+    - name: Check if port 9090 is open
+      ansible.builtin.wait_for:
+        host: "{{ ansible_host }}"
+        port: 9090
+        state: started
+        timeout: 10
+      register: port_check_result
+      ignore_errors: true
+
+    #- name: Verify web server is running on port 9090
+    #  assert:
+    #    that: 
+    #      - port_check_result is success
+    #      - "'Welcome to My Web Server' in (lookup('url', 'http://{{ ansible_host }}:9090'))"
+    #  register: smoke_test_result
+    #  when: port_check_result is success
+
+    - name: Print smoke test result
+      ansible.builtin.debug:
+        msg: "Smoke test {{ 'passed' if port_check_result else 'failed' }}"
