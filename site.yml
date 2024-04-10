@@ -1,14 +1,20 @@
 ---
-tasks:
+- name: Main Playbook
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Import PingServers playbook
+      import_playbook: PingServers.yml
 
-- name: Run PingServers
-    - ansible.builtin.import_playbook: PingServers.yml
+    - name: Import SmokeTest playbook
+      import_playbook: SmokeTest.yml
 
-- name: Run SmokeTest
-    - ansible.builtin.import_playbook: SmokeTest.yml
+    - name: Import UpdateFedora playbook
+      import_playbook: UpdateFedora.yml
 
-- name: Run UpdateFedora
-    - ansible.builtin.import_playbook: UpdateFedora.yml
-    
-- name: Run SmokeTest after
-    - ansible.builtin.import_playbook: SmokeTest.yml
+    - name: Wait for 30 seconds
+      pause:
+        seconds: 30
+
+    - name: Import SmokeTest playbook again
+      import_playbook: SmokeTest.yml
