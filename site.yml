@@ -4,17 +4,17 @@
   gather_facts: no
   tasks:
     - name: Import PingServers playbook
-      import_playbook: PingServers.yml
+      import_playbook: playbooks/PingServers.yml
 
     - name: Import SmokeTest playbook
-      import_playbook: SmokeTest.yml
+      import_playbook: playbooks/SmokeTest.yml
 
     - name: Import UpdateFedora playbook
-      import_playbook: UpdateFedora.yml
+      import_playbook: playbooks/UpdateFedora.yml
 
     - name: Wait for 30 seconds
       pause:
         seconds: 30
 
     - name: Import SmokeTest playbook again
-      import_playbook: SmokeTest.yml
+      import_playbook: playbooks/SmokeTest.yml
