@@ -6,7 +6,7 @@
     - name: Wait for 10 seconds
       pause:
           seconds: 10
-          msg: "Wait is over"
+          #msg: "Wait is over"
             
 - import_playbook: "playbooks/PingServers.yml"
 
