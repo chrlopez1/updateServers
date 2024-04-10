@@ -11,6 +11,9 @@
 - import_playbook: "playbooks/PingServers.yml"
 
 - name: Run Smoketest before patch
+  hosts: localhost
+  gather_facts: no
+  tasks:
   
 - import_playbook: "playbooks/SmokeTest.yml"
 
